@@ -1,0 +1,7 @@
+<project name="nme-webp" url="https://github.com/soywiz/haxe-nme-webp" license="MIT">
+    <user name="soywiz"/>
+ 	<description>NME haxe extensions for decoding webp 0.2.0 images.</description>
+    <version name="0.0.1">Initial Release linked to webp 0.2.0</version>
+	<depends name="nme"/>
+	<depends name="hxcpp"/>
+</project>

@@ -1,0 +1,87 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<set name="ndll-tool" value="dll" unless="iphone" />
+<set name="ndll-tool" value="static_link" if="iphone"/>
+
+<set name="name_prefix" value="lib" if="iphone" />
+	
+<files id="common">
+	<depend name="${HXCPP}/include/hx/Macros.h"/>
+	<depend name="${HXCPP}/include/hx/CFFI.h"/>
+	<compilerflag value="-Iinclude" />
+	<file name="common/ExternalInterface.cpp" />
+
+	<file name="webp/dec/alpha.c" />
+	<file name="webp/dec/buffer.c" />
+	<file name="webp/dec/frame.c" />
+	<file name="webp/dec/idec.c" />
+	<file name="webp/dec/io.c" />
+	<file name="webp/dec/layer.c" />
+	<file name="webp/dec/quant.c" />
+	<file name="webp/dec/tree.c" />
+	<file name="webp/dec/vp8.c" />
+	<file name="webp/dec/vp8l.c" />
+	<file name="webp/dec/webp.c" />
+
+	<file name="webp/dsp/cpu.c" />
+	<file name="webp/dsp/dec.c" />
+	<file name="webp/dsp/dec_neon.c" />
+	<file name="webp/dsp/dec_sse2.c" />
+	<file name="webp/dsp/enc.c" />
+	<file name="webp/dsp/enc_sse2.c" />
+	<file name="webp/dsp/lossless.c" />
+	<file name="webp/dsp/upsampling.c" />
+	<file name="webp/dsp/upsampling_sse2.c" />
+	<file name="webp/dsp/yuv.c" />
+
+	<!--
+	<file name="webp/enc/alpha.c" />
+	<file name="webp/enc/analysis.c" />
+	<file name="webp/enc/backward_references.c" />
+	<file name="webp/enc/config.c" />
+	<file name="webp/enc/cost.c" />
+	<file name="webp/enc/filter.c" />
+	<file name="webp/enc/frame.c" />
+	<file name="webp/enc/histogram.c" />
+	<file name="webp/enc/iterator.c" />
+	<file name="webp/enc/layer.c" />
+	<file name="webp/enc/picture.c" />
+	<file name="webp/enc/quant.c" />
+	<file name="webp/enc/syntax.c" />
+	<file name="webp/enc/tree.c" />
+	<file name="webp/enc/vp8l.c" />
+	<file name="webp/enc/webpenc.c" />
+	-->
+
+	<file name="webp/mux/demux.c" />
+	<file name="webp/mux/muxedit.c" />
+	<file name="webp/mux/muxinternal.c" />
+	<file name="webp/mux/muxread.c" />
+
+	<file name="webp/utils/bit_reader.c" />
+	<file name="webp/utils/bit_writer.c" />
+	<file name="webp/utils/color_cache.c" />
+	<file name="webp/utils/filters.c" />
+	<file name="webp/utils/huffman.c" />
+	<file name="webp/utils/huffman_encode.c" />
+	<file name="webp/utils/quant_levels.c" />
+	<file name="webp/utils/rescaler.c" />
+	<file name="webp/utils/thread.c" />
+	<file name="webp/utils/utils.c" />
+
+</files>
+	
+<target id="NDLL" output="${name_prefix}nme-webp${name_extra}" tool="linker" toolid="${ndll-tool}">
+	<outdir name="../ndll/${BINDIR}" />
+	<ext value=".ndll" unless="mobile"/>
+	<files id="common" />
+	<!--<files id="windows" if="windows"/>-->
+</target>
+
+<target id="default">
+	<target id="NDLL"/>
+</target>
+
+</xml>
