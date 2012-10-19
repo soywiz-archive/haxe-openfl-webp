@@ -1,5 +1,5 @@
 @echo off
 cls
-pushd project
+pushd %~dp0\project
 haxelib run hxcpp Build.xml
 popd
