@@ -21,12 +21,21 @@
 #define DEFINE_FUNC_2(NAME, PARAM1, PARAM2) DEFINE_FUNC(2, NAME, value PARAM1, value PARAM2)
 #define DEFINE_FUNC_3(NAME, PARAM1, PARAM2, PARAM3) DEFINE_FUNC(3, NAME, value PARAM1, value PARAM2, value PARAM3)
 
+#if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX)
+// Include neko glue....
+#define NEKO_COMPATIBLE
+#endif
+
+#ifdef HX_WINDOWS
+#define snprintf _snprintf
+#endif
+
 extern "C" {
 	DEFINE_FUNC_0(webp_get_decoder_version) {
 		//alloc_string
 		char temp[16];
 		int ver = WebPGetDecoderVersion();
-		_snprintf(temp, sizeof(temp), "%d.%d.%d", (ver >> 16) & 0xFF, (ver >> 8) & 0xFF, (ver >> 0) & 0xFF);
+		snprintf(temp, sizeof(temp), "%d.%d.%d", (ver >> 16) & 0xFF, (ver >> 8) & 0xFF, (ver >> 0) & 0xFF);
 		return alloc_string(temp);
 	}
 

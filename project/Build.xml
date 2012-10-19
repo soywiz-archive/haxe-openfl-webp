@@ -2,10 +2,29 @@
 
 <include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 
-<set name="ndll-tool" value="dll" unless="iphone" />
-<set name="ndll-tool" value="static_link" if="iphone"/>
+<set name="iphonesim" value="1" if="ios" />
+<set name="iphoneos" value="1" if="ios" unless="simulator" />
+
+<set name="mobile" value="1" if="iphone"/>
+<set name="mobile" value="1" if="android"/>
+<set name="mobile" value="1" if="webos"/>
+<set name="mobile" value="1" if="blackberry"/>
+<set name="mobile" value="1" if="gph"/>
+
+<set name="IOS_ARCH" value="-v7" if="HXCPP_ARMV7" />
+
+<set name="ndll-tool" value="dll" unless="iphone"/>
+<set name="ndll-tool" value="static" if="iphone"/>
+<set name="name_extra" value=".iphonesim" if="iphonesim"/>
+<set name="name_extra" value=".iphoneos${IOS_ARCH}" if="iphoneos"/>
+
+<set name="name_extra" value="-x86" if="simulator" unless="iphonesim" />
 
 <set name="name_prefix" value="lib" if="iphone" />
+
+<set name="sse2" value="1" if="windows" />
+<set name="sse2" value="1" if="linux" />
+<set name="sse2" value="1" if="mac" />
 	
 <files id="common">
 	<depend name="${HXCPP}/include/hx/Macros.h"/>
@@ -26,14 +45,14 @@
 	<file name="webp/dec/webp.c" />
 
 	<file name="webp/dsp/cpu.c" />
-	<file name="webp/dsp/dec.c" />
-	<file name="webp/dsp/dec_neon.c" />
-	<file name="webp/dsp/dec_sse2.c" />
+	<file name="webp/dsp/dec.c" unless="sse2,neon" />
+	<file name="webp/dsp/dec_neon.c" if="neon" />
+	<file name="webp/dsp/dec_sse2.c" if="sse2" />
 	<file name="webp/dsp/enc.c" />
-	<file name="webp/dsp/enc_sse2.c" />
+	<file name="webp/dsp/enc_sse2.c" if="sse2" />
 	<file name="webp/dsp/lossless.c" />
 	<file name="webp/dsp/upsampling.c" />
-	<file name="webp/dsp/upsampling_sse2.c" />
+	<file name="webp/dsp/upsampling_sse2.c" if="sse2" />
 	<file name="webp/dsp/yuv.c" />
 
 	<!--
@@ -72,12 +91,15 @@
 	<file name="webp/utils/utils.c" />
 
 </files>
+
+<files id="windows">
+</files>
 	
 <target id="NDLL" output="${name_prefix}nme-webp${name_extra}" tool="linker" toolid="${ndll-tool}">
 	<outdir name="../ndll/${BINDIR}" />
 	<ext value=".ndll" unless="mobile"/>
 	<files id="common" />
-	<!--<files id="windows" if="windows"/>-->
+	<files id="windows" if="windows"/>
 </target>
 
 <target id="default">
