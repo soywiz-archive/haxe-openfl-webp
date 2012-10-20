@@ -1,19 +1,19 @@
 package webp;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
-import neash.utils.ByteArray;
+import nme.utils.ByteArray;
 import nme.display.BitmapData;
 import nme.errors.Error;
-import nme.geom.Point;
+import nme.geom.Rectangle;
 
-class Decoder {
+class Webp {
 	public static function getDecoderVersion():String {
 		return webp_get_decoder_version();
 	}
 
-	public static function getInfo(data:Bytes):Array<Int> {
+	public static function getImageSize(data:Bytes):Rectangle {
 		var arr = webp_get_info(data.getData());
-		return arr;
+		return new Rectangle(0, 0, arr[0], arr[1]);
 	}
 	
 	private static function _decode(arr:Array<Dynamic>):BitmapData {

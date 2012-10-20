@@ -39,12 +39,12 @@ extern "C" {
 		return alloc_string(temp);
 	}
 
-	DEFINE_FUNC_1(webp_get_info, data) {
-		if (!val_is_buffer(data)) {
+	DEFINE_FUNC_1(webp_get_info, data_buffer_value) {
+		if (!val_is_buffer(data_buffer_value)) {
 			val_throw(alloc_string("Expected to be a buffer"));
 			return alloc_null();
 		}
-		buffer data_buffer = val_to_buffer(data);
+		buffer data_buffer = val_to_buffer(data_buffer_value);
 		int    data_len = buffer_size(data_buffer);
 		char  *data_ptr = buffer_data(data_buffer);
 		int webp_width = -1, webp_height = -1;
@@ -59,12 +59,12 @@ extern "C" {
 		return array;
 	}
 	
-	DEFINE_FUNC_1(webp_decode_argb, data) {
-		if (!val_is_buffer(data)) {
+	DEFINE_FUNC_1(webp_decode_argb, data_buffer_value) {
+		if (!val_is_buffer(data_buffer_value)) {
 			val_throw(alloc_string("Expected to be a buffer"));
 			return alloc_null();
 		}
-		buffer data_buffer = val_to_buffer(data);
+		buffer data_buffer = val_to_buffer(data_buffer_value);
 		int    data_len = buffer_size(data_buffer);
 		char  *data_ptr = buffer_data(data_buffer);
 		int webp_width = -1, webp_height = -1;
