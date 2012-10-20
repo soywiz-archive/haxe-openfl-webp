@@ -11,9 +11,32 @@ class Webp {
 		return webp_get_decoder_version();
 	}
 
-	public static function getImageSize(data:Bytes):Rectangle {
-		var arr = webp_get_info(data.getData());
-		return new Rectangle(0, 0, arr[0], arr[1]);
+	public static function getEncoderVersion():String {
+		return webp_get_encoder_version();
+	}
+
+	public static function getImageInfo(bytes:Bytes):WebpInfo {
+		var infoArray = webp_get_info(bytes.getData());
+		var info:WebpInfo = new WebpInfo();
+		
+		info.width = infoArray[0];
+		info.height = infoArray[1];
+		info.hasAlpha = (infoArray[2] != 0);
+		info.bitstreamVersion = infoArray[3];
+		info.noIncrementalDecoding = infoArray[4];
+		info.rotate = infoArray[5];
+		info.uvSampling = infoArray[6];
+
+		return info;
+	}
+
+	public static function decodeAsBitmapData(bytes:Bytes):BitmapData {
+		return _decode(webp_decode_argb(bytes.getData()));
+	}
+	
+	public static function encodeBitmapData(bitmapData:BitmapData, lossless:Bool = false, quality_factor:Float = 86):Bytes {
+		var input_bytes:Bytes = bitmapData.getPixels(bitmapData.rect);
+		return Bytes.ofData(webp_encode_argb(input_bytes.getData(), bitmapData.width, bitmapData.height, lossless, quality_factor));
 	}
 	
 	private static function _decode(arr:Array<Dynamic>):BitmapData {
@@ -26,13 +49,11 @@ class Webp {
 		bitmapData.setPixels(bitmapData.rect, ByteArray.fromBytes(bytes));
 		return bitmapData;
 	}
-
-	public static function decodeAsBitmapData(data:Bytes):BitmapData {
-		return _decode(webp_decode_argb(data.getData()));
-	}
 	
 	static var webp_get_decoder_version = cpp.Lib.load("nme-webp", "webp_get_decoder_version", 0);
-	static var webp_get_info = cpp.Lib.load("nme-webp", "webp_get_info", 1);
+	static var webp_get_encoder_version = cpp.Lib.load("nme-webp", "webp_get_encoder_version", 0);
+	static var webp_get_info = cpp.Lib.load("nme-webp", "webp_get_features", 1);
 	static var webp_decode_argb = cpp.Lib.load("nme-webp", "webp_decode_argb", 1);
+	static var webp_encode_argb = cpp.Lib.load("nme-webp", "webp_encode_argb", 5);
 	
 }

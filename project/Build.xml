@@ -55,7 +55,6 @@
 	<file name="webp/dsp/upsampling_sse2.c" if="sse2" />
 	<file name="webp/dsp/yuv.c" />
 
-	<!--
 	<file name="webp/enc/alpha.c" />
 	<file name="webp/enc/analysis.c" />
 	<file name="webp/enc/backward_references.c" />
@@ -72,7 +71,6 @@
 	<file name="webp/enc/tree.c" />
 	<file name="webp/enc/vp8l.c" />
 	<file name="webp/enc/webpenc.c" />
-	-->
 
 	<file name="webp/mux/demux.c" />
 	<file name="webp/mux/muxedit.c" />
