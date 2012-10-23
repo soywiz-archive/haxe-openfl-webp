@@ -4,3 +4,4 @@
 /project/all_objs
 /deploy.zip
 .DS_Store
+/tests/emscripten/js/libwebp.js
