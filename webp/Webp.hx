@@ -1,22 +1,47 @@
 package webp;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
+#if (cpp || neko)
+import neash.utils.ByteArray;
+#else
 import nme.utils.ByteArray;
+#end
 import nme.display.BitmapData;
 import nme.errors.Error;
 import nme.geom.Rectangle;
 
 class Webp {
-	public static function getDecoderVersion():String {
+	/**
+	 * Obtains the string version of the decoder
+	 * 
+	 * @example Webp.getDecoderVersion() == "0.2.0"
+	 * 
+	 * @return string
+	 */
+	static public function getDecoderVersion():String {
 		return webp_get_decoder_version();
 	}
 
-	public static function getEncoderVersion():String {
+	/**
+	 * Obtains the string version of the encoder
+	 * 
+	 * @example Webp.getEncoderVersion() == "0.2.0"
+	 * 
+	 * @return string
+	 */
+	static public function getEncoderVersion():String {
 		return webp_get_encoder_version();
 	}
 
-	public static function getImageInfo(bytes:Bytes):WebpInfo {
-		var infoArray = webp_get_info(bytes.getData());
+	/**
+	 * Obtains information about a webp image.
+	 * 
+	 * @param  bytes     Webp bytes
+	 * 
+	 * @return Information about the image
+	 */
+	static public function getImageInfo(bytes:ByteArray):WebpInfo {
+		var infoArray = webp_get_info(_byteArrayToBytes(bytes).getData());
 		var info:WebpInfo = new WebpInfo();
 		
 		info.width = infoArray[0];
@@ -30,16 +55,40 @@ class Webp {
 		return info;
 	}
 
-	public static function decodeAsBitmapData(bytes:Bytes):BitmapData {
-		return _decode(webp_decode_argb(bytes.getData()));
+	/**
+	 * Decodes a webp image and returns a BitmapData with the image.
+	 * 
+	 * @param  bytes    Webp bytes
+	 * 
+	 * @return BitmapData with the image
+	 */
+	static public function decodeAsBitmapData(bytes:ByteArray):BitmapData {
+		return _decode(webp_decode_argb(_byteArrayToBytes(bytes).getData()));
 	}
-	
-	public static function encodeBitmapData(bitmapData:BitmapData, lossless:Bool = false, quality_factor:Float = 86):Bytes {
+
+	/**
+	 * Encodes a BitmapData image into a webp image and returns it as a ByteArray.
+	 * 
+	 * @param   bitmapData       Image to encode
+	 * @param   lossless         Wether to perform a lossless compression or not
+	 * @param   quality_factor   Quality of the encoded image 0-100
+	 * 
+	 * @return  ByteArray with the image encoded as Webp
+	 */
+	static public function encodeBitmapData(bitmapData:BitmapData, lossless:Bool = false, quality_factor:Float = 86):ByteArray {
 		var input_bytes:Bytes = bitmapData.getPixels(bitmapData.rect);
-		return Bytes.ofData(webp_encode_argb(input_bytes.getData(), bitmapData.width, bitmapData.height, lossless, quality_factor));
+		return _bytesToByteArray(Bytes.ofData(webp_encode_argb(input_bytes.getData(), bitmapData.width, bitmapData.height, lossless, quality_factor)));
+	}
+
+	static private function _byteArrayToBytes(byteArray:ByteArray):Bytes {
+		return byteArray;
 	}
 	
-	private static function _decode(arr:Array<Dynamic>):BitmapData {
+	static private function _bytesToByteArray(bytes:Bytes):ByteArray {
+		return ByteArray.fromBytes(bytes);
+	}
+
+	static private function _decode(arr:Array<Dynamic>):BitmapData {
 		var width:Int = cast(arr[0]);
 		var height:Int = cast(arr[1]);
 		var bytes:Bytes = Bytes.ofData(cast(arr[2]));
