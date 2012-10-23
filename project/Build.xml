@@ -29,7 +29,10 @@
 <files id="common">
 	<depend name="${HXCPP}/include/hx/Macros.h"/>
 	<depend name="${HXCPP}/include/hx/CFFI.h"/>
+
 	<compilerflag value="-Iinclude" />
+	<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/cpufeatures" if="android"/>
+
 	<file name="common/ExternalInterface.cpp" />
 
 	<file name="webp/dec/alpha.c" />
