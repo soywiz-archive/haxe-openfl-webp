@@ -9,8 +9,8 @@
 	<tag v="alpha"/>
 	<tag v="lossy"/>
 	<tag v="lossless"/>
-	<description>NME haxe extensions for decoding and encoding webp 0.2.0 images (lossy, lossless and alpha support).</description>
-	<version name="0.0.3">Release 0.0.3 linked to webp 0.2.0</version>
+	<description>NME haxe extensions for decoding and encoding webp 0.2.1 images (lossy, lossless and alpha support).</description>
+	<version name="0.0.4">Release 0.0.4 linked to webp 0.2.1</version>
 	<depends name="nme"/>
 	<depends name="hxcpp"/>
 </project>
