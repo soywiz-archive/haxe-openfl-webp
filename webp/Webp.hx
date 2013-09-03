@@ -1,14 +1,10 @@
 package webp;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
-#if (cpp || neko)
-import neash.utils.ByteArray;
-#else
-import nme.utils.ByteArray;
-#end
-import nme.display.BitmapData;
-import nme.errors.Error;
-import nme.geom.Rectangle;
+import flash.utils.ByteArray;
+import flash.display.BitmapData;
+import flash.errors.Error;
+import flash.geom.Rectangle;
 
 class Webp {
 	/**

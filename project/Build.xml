@@ -102,7 +102,7 @@
 <files id="windows">
 </files>
 	
-<target id="NDLL" output="${name_prefix}nme-webp${name_extra}" tool="linker" toolid="${ndll-tool}">
+<target id="NDLL" output="${name_prefix}openfl-webp${name_extra}" tool="linker" toolid="${ndll-tool}">
 	<outdir name="../ndll/${BINDIR}" />
 	<ext value=".ndll" unless="mobile"/>
 	<files id="common" />

@@ -1,14 +1,14 @@
 {
-  "name": "nme-webp",
+  "name": "openfl-webp",
   "license": "MIT",
-  "tags": ["nme","cpp","neko","webp","imaging","formats","alpha","lossy","lossless"],
-  "description": "NME haxe extensions for decoding and encoding webp 0.2.1 images (lossy, lossless and alpha support).",
+  "tags": ["openfl","cpp","neko","webp","imaging","formats","alpha","lossy","lossless"],
+  "description": "OPENFL haxe extensions for decoding and encoding webp 0.3.1 images (lossy, lossless and alpha support).",
   "contributors": ["soywiz"],
-  "releasenote": "Release 0.0.4 linked to webp 0.2.1",
-  "version": "0.0.4",
-  "url": "https://github.com/soywiz/haxe-nme-webp",
+  "releasenote": "Release 0.0.5 linked to webp 0.3.1",
+  "version": "0.0.5",
+  "url": "https://github.com/soywiz/haxe-openfl-webp",
   "dependencies": {
-    "nme": "",
+    "openfl": "",
     "hxcpp": ""
   }
 }

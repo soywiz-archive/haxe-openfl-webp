@@ -1,6 +1,6 @@
-<project name="nme-webp" url="https://github.com/soywiz/haxe-nme-webp" license="MIT">
+<project name="openfl-webp" url="https://github.com/soywiz/haxe-openfl-webp" license="MIT">
 	<user name="soywiz"/>
-	<tag v="nme"/>
+	<tag v="openfl"/>
 	<tag v="cpp"/>
 	<tag v="neko"/>
 	<tag v="webp"/>
@@ -9,8 +9,8 @@
 	<tag v="alpha"/>
 	<tag v="lossy"/>
 	<tag v="lossless"/>
-	<description>NME haxe extensions for decoding and encoding webp 0.2.1 images (lossy, lossless and alpha support).</description>
-	<version name="0.0.4">Release 0.0.4 linked to webp 0.2.1</version>
-	<depends name="nme"/>
+	<description>OPENFL haxe extensions for decoding and encoding webp 0.3.1 images (lossy, lossless and alpha support).</description>
+	<version name="0.0.5">Release 0.0.5 linked to webp 0.3.1</version>
+	<depends name="openfl"/>
 	<depends name="hxcpp"/>
 </project>
