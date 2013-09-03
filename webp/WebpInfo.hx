@@ -13,8 +13,6 @@ class WebpInfo {
 	}
 	
 	public function toString():String {
-		return Std.format(
-			"WebpInfo(size(${width}x${height}),alpha:${hasAlpha},bitstreamVersion:${bitstreamVersion},noIncrementalDecoding:${noIncrementalDecoding},rotate:${rotate},uvSampling:${uvSampling})"
-		);
+		return 'WebpInfo(size(${width}x${height}),alpha:${hasAlpha},bitstreamVersion:${bitstreamVersion},noIncrementalDecoding:${noIncrementalDecoding},rotate:${rotate},uvSampling:${uvSampling})';
 	}
 }

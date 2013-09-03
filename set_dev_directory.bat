@@ -1,2 +1,2 @@
 @echo off
-haxelib dev nme-webp %~dp0.
+haxelib dev openfl-webp %~dp0.

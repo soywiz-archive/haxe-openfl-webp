@@ -95,10 +95,10 @@ class Webp {
 		return bitmapData;
 	}
 	
-	static var webp_get_decoder_version = cpp.Lib.load("nme-webp", "webp_get_decoder_version", 0);
-	static var webp_get_encoder_version = cpp.Lib.load("nme-webp", "webp_get_encoder_version", 0);
-	static var webp_get_info = cpp.Lib.load("nme-webp", "webp_get_features", 1);
-	static var webp_decode_argb = cpp.Lib.load("nme-webp", "webp_decode_argb", 1);
-	static var webp_encode_argb = cpp.Lib.load("nme-webp", "webp_encode_argb", 5);
+	static var webp_get_decoder_version = cpp.Lib.load("openfl-webp", "webp_get_decoder_version", 0);
+	static var webp_get_encoder_version = cpp.Lib.load("openfl-webp", "webp_get_encoder_version", 0);
+	static var webp_get_info = cpp.Lib.load("openfl-webp", "webp_get_features", 1);
+	static var webp_decode_argb = cpp.Lib.load("openfl-webp", "webp_decode_argb", 1);
+	static var webp_encode_argb = cpp.Lib.load("openfl-webp", "webp_encode_argb", 5);
 	
 }

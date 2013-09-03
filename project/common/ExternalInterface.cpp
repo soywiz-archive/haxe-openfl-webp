@@ -2,15 +2,17 @@
 #define IMPLEMENT_API
 #endif
 
-//#include <hx/CFFI.h>
+#ifndef STATIC_LINK
+#define IMPLEMENT_API
+#endif
 
-//#include <Object.h>
+#if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX)
+// Include neko glue....
+#define NEKO_COMPATIBLE
+#endif
 
-#include <hxcpp.h>
-//#include <hx/Macros.h>
 #include <hx/CFFI.h>
-//#include <hx/CFFIAPI.h>
-#include <hxcpp.h>
+
 #include "../webp/webp/decode.h"
 #include "../webp/webp/encode.h"
 #include <string.h>
@@ -188,4 +190,5 @@ extern "C" {
 		
 		return buffer_val(output_buffer);
 	}
+	
 }
