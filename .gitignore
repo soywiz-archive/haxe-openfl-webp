@@ -5,3 +5,7 @@
 /deploy.zip
 .DS_Store
 /tests/emscripten/js/libwebp.js
+
+/example/Export
+
+Thumbs.db
