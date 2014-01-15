@@ -85,6 +85,7 @@
 	<file name="webp/mux/muxinternal.c" />
 	<file name="webp/mux/muxread.c" />
 
+	<file name="webp/utils/alpha_processing.c" />
 	<file name="webp/utils/bit_reader.c" />
 	<file name="webp/utils/bit_writer.c" />
 	<file name="webp/utils/color_cache.c" />
@@ -92,10 +93,11 @@
 	<file name="webp/utils/huffman.c" />
 	<file name="webp/utils/huffman_encode.c" />
 	<file name="webp/utils/quant_levels.c" />
+	<file name="webp/utils/quant_levels_dec.c" />
+	<file name="webp/utils/random.c" />
 	<file name="webp/utils/rescaler.c" />
 	<file name="webp/utils/thread.c" />
 	<file name="webp/utils/utils.c" />
-	<file name="webp/utils/quant_levels_dec.c" />
 
 </files>
 
