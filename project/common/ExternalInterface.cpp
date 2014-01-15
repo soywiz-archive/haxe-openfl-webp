@@ -105,6 +105,9 @@ extern "C" {
 		val_array_set_i(array, 0, alloc_int(webp_width));
 		val_array_set_i(array, 1, alloc_int(webp_height));
 		val_array_set_i(array, 2, buffer_val(webp_buffer));
+		
+		if (webp_data_ptr != NULL) free(webp_data_ptr);
+		
 		return array;
 	}
 
