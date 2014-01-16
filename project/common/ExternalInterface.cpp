@@ -73,7 +73,8 @@ extern "C" {
 		val_array_set_i(array, 0, alloc_int(features.width));
 		val_array_set_i(array, 1, alloc_int(features.height));
 		val_array_set_i(array, 2, alloc_int(features.has_alpha));
-		val_array_set_i(array, 3, alloc_int(features.bitstream_version));
+		//val_array_set_i(array, 3, alloc_int(features.bitstream_version));
+		val_array_set_i(array, 3, alloc_int(0));
 		val_array_set_i(array, 4, alloc_int(features.no_incremental_decoding));
 		val_array_set_i(array, 5, alloc_int(features.rotate));
 		val_array_set_i(array, 6, alloc_int(features.uv_sampling));

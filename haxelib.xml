@@ -9,8 +9,8 @@
 	<tag v="alpha"/>
 	<tag v="lossy"/>
 	<tag v="lossless"/>
-	<description>OPENFL haxe extensions for decoding and encoding webp 0.3.1 images (lossy, lossless and alpha support).</description>
-	<version name="0.0.5">Release 0.0.5 linked to webp 0.3.1</version>
+	<description>OPENFL haxe extensions for decoding and encoding webp 0.4.0 images (lossy, lossless and alpha support).</description>
+	<version name="0.0.6">Release 0.0.6 linked to webp 0.4.0</version>
 	<depends name="openfl"/>
 	<depends name="hxcpp"/>
 </project>
