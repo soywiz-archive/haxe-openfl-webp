@@ -9,6 +9,7 @@
 <set name="mobile" value="1" if="android"/>
 <set name="mobile" value="1" if="webos"/>
 <set name="mobile" value="1" if="blackberry"/>
+<set name="mobile" value="1" if="tizen"/>
 <set name="mobile" value="1" if="gph"/>
 
 <set name="IOS_ARCH" value="-v7" if="HXCPP_ARMV7" />
