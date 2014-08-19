@@ -41,7 +41,6 @@
 	<file name="webp/dec/frame.c" />
 	<file name="webp/dec/idec.c" />
 	<file name="webp/dec/io.c" />
-	<file name="webp/dec/layer.c" />
 	<file name="webp/dec/quant.c" />
 	<file name="webp/dec/tree.c" />
 	<file name="webp/dec/vp8.c" />
@@ -52,12 +51,22 @@
 	<file name="webp/dsp/dec.c" unless="sse2,neon" />
 	<file name="webp/dsp/dec_neon.c" if="neon" />
 	<file name="webp/dsp/dec_sse2.c" if="sse2" />
-	<file name="webp/dsp/enc.c" />
+	<file name="webp/dsp/enc.c" unless="sse2,avc2,mips32" />
 	<file name="webp/dsp/enc_sse2.c" if="sse2" />
-	<file name="webp/dsp/lossless.c" />
+	<file name="webp/dsp/enc_avx2.c" if="avx2" />
+	<file name="webp/dsp/enc_mips32.c" if="mips32" />
+	<file name="webp/dsp/lossless.c" unless="mips32,neon" />
+	<file name="webp/dsp/lossless_mips32.c" if="mips32" />
+	<file name="webp/dsp/lossless_neon.c" if="neon" />
+	<file name="webp/dsp/lossless_sse2.c" if="sse2" />
 	<file name="webp/dsp/upsampling.c" />
 	<file name="webp/dsp/upsampling_sse2.c" if="sse2" />
-	<file name="webp/dsp/yuv.c" />
+	<file name="webp/dsp/yuv.c" unless="mips32,sse2" />
+	<file name="webp/dsp/yuv_mips32.c" if="mips32" />
+	<file name="webp/dsp/yuv_sse2.c" if="sse2" />
+	<file name="webp/dsp/alpha_processing.c" />
+	<file name="webp/dsp/dec_clip_tables.c" />
+	<file name="webp/dsp/dec_mips32.c" id="mips" />
 
 	<file name="webp/dsp/enc_neon.c" if="neon" />
 	<file name="webp/dsp/upsampling_neon.c" if="neon" />
@@ -71,8 +80,11 @@
 	<file name="webp/enc/frame.c" />
 	<file name="webp/enc/histogram.c" />
 	<file name="webp/enc/iterator.c" />
-	<file name="webp/enc/layer.c" />
 	<file name="webp/enc/picture.c" />
+	<file name="webp/enc/picture_csp.c" />
+	<file name="webp/enc/picture_psnr.c" />
+	<file name="webp/enc/picture_rescale.c" />
+	<file name="webp/enc/picture_tools.c" />
 	<file name="webp/enc/quant.c" />
 	<file name="webp/enc/syntax.c" />
 	<file name="webp/enc/tree.c" />
@@ -86,7 +98,6 @@
 	<file name="webp/mux/muxinternal.c" />
 	<file name="webp/mux/muxread.c" />
 
-	<file name="webp/utils/alpha_processing.c" />
 	<file name="webp/utils/bit_reader.c" />
 	<file name="webp/utils/bit_writer.c" />
 	<file name="webp/utils/color_cache.c" />
