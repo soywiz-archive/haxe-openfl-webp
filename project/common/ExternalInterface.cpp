@@ -1,13 +1,8 @@
-#ifndef IPHONE
-#define IMPLEMENT_API
-#endif
-
 #ifndef STATIC_LINK
 #define IMPLEMENT_API
 #endif
 
 #if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX)
-// Include neko glue....
 #define NEKO_COMPATIBLE
 #endif
 
@@ -25,11 +20,6 @@
 #define DEFINE_FUNC_3(NAME, PARAM1, PARAM2, PARAM3) DEFINE_FUNC(3, NAME, value PARAM1, value PARAM2, value PARAM3)
 #define DEFINE_FUNC_4(NAME, PARAM1, PARAM2, PARAM3, PARAM4) DEFINE_FUNC(4, NAME, value PARAM1, value PARAM2, value PARAM3, value PARAM4)
 #define DEFINE_FUNC_5(NAME, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5) DEFINE_FUNC(5, NAME, value PARAM1, value PARAM2, value PARAM3, value PARAM4, value PARAM5)
-
-#if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX)
-// Include neko glue....
-#define NEKO_COMPATIBLE
-#endif
 
 #ifdef HX_WINDOWS
 #define snprintf _snprintf
@@ -193,6 +183,5 @@ extern "C" {
 		if (rgba != NULL) free(rgba);
 		
 		return buffer_val(output_buffer);
-	}
-	
+	}	
 }

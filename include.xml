@@ -1,0 +1,4 @@
+<project>
+	<ndll name="openfl-webp" haxelib="openfl-webp" />
+	<haxelib name="openfl" />
+</project>

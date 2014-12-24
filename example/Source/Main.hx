@@ -16,6 +16,10 @@ class Main extends Sprite {
 	public function new () {
 		
 		super ();
+
+		trace('started!');
+		trace(Webp.getDecoderVersion());
+		trace(Webp.getEncoderVersion());
 		
 		//var bitmap:Bitmap = new Bitmap (Assets.getBitmapData ("assets/openfl.png"));
 		var byteArray:ByteArray = Assets.getBytes("assets/texture.webp");

@@ -1,6 +1,7 @@
 {
   "name": "openfl-webp",
   "license": "MIT",
+  "classPath": "src",
   "tags": ["openfl","cpp","neko","webp","imaging","formats","alpha","lossy","lossless"],
   "description": "OPENFL haxe extensions for decoding and encoding webp 0.4.1 images (lossy, lossless and alpha support).",
   "contributors": ["soywiz"],

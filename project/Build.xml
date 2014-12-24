@@ -2,6 +2,19 @@
 
 <include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 
+<!-- 
+  Build with:
+     -Diphonesim              -> build i386 version
+     -Diphoneos               -> build armv6
+     -Diphoneos -DHXCPP_ARMV7 -> build armv7
+     -Dandroid                -> build android armv5
+     -Dandroid  -DHXCPP_ARMV7 -> build android armv7
+     -Dandroid  -DHXCPP_X86   -> build android x86
+     - no defines             -> build current OS
+     -DHXCPP_M64              -> build current OS, 64 but version
+     -Ddebug                  -> Used in combination with above for debug
+-->
+
 <set name="iphonesim" value="1" if="ios" />
 <set name="iphoneos" value="1" if="ios" unless="simulator" />
 
@@ -23,10 +36,17 @@
 
 <set name="name_prefix" value="lib" if="iphone" />
 
+
+<!--
+<set name="neon" value="1" if="HXCPP_ARMV7" />
+-->
+
+<set name="neon" value="1" if="ios,HXCPP_ARMV7" />
 <set name="sse2" value="1" if="windows" />
 <set name="sse2" value="1" if="linux" />
 <set name="sse2" value="1" if="mac" />
-	
+<set name="sse2" value="1" if="HXCPP_X86" />
+
 <files id="common">
 	<depend name="${HXCPP}/include/hx/Macros.h"/>
 	<depend name="${HXCPP}/include/hx/CFFI.h"/>
@@ -65,6 +85,7 @@
 	<file name="webp/dsp/yuv_mips32.c" if="mips32" />
 	<file name="webp/dsp/yuv_sse2.c" if="sse2" />
 	<file name="webp/dsp/alpha_processing.c" />
+	<file name="webp/dsp/alpha_processing_sse2.c" idf="sse2" />
 	<file name="webp/dsp/dec_clip_tables.c" />
 	<file name="webp/dsp/dec_mips32.c" id="mips" />
 
